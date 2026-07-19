@@ -22,6 +22,7 @@ const BUDGET_LABELS = {
   tickets: () => `🎫 預付票券`, 
   prepaid: () => `💳 其他預付`, 
   sync_flight: () => '✈️ 國內線/轉機機票', 
+  sync_flight_intl: () => '✈️ 國際線機票', // 🌟 新增這一行
   sync_food: () => '🍽️ 行程餐食費', 
   sync_transport: () => '🚆 行程交通費', 
   sync_hotel: () => '🏨 行程住宿費', 
@@ -250,10 +251,16 @@ const TripDetails = ({ trip, onBack, onDataChange, isDarkMode, toggleTheme, isAd
                       <>
                         <div className="time">{act.time}</div>
                         <div className="details">
-                          <div className="act-title" style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '5px' }}>
-                            {act.type === 'food' && '🍽️ '}{act.type === 'transport' && '🚆 '}{act.type === 'hotel' && '🏨 '}{act.type === 'ticket' && '🎫 '}{act.type === 'flight' && '✈️ '}{act.type === 'other' && '🏷️ '}{act.title}
-                            {act.cost > 0 && <span style={costBadgeStyle}>💰 {formatNumber(act.cost)} {act.currency === 'twd' ? 'NT$' : '円'}</span>}
-                          </div>
+                         <div className="act-title" style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '5px' }}>
+  {act.type === 'food' && '🍽️ '}
+  {act.type === 'transport' && '🚆 '}
+  {act.type === 'hotel' && '🏨 '}
+  {act.type === 'ticket' && '🎫 '}
+  {(act.type === 'flight' || act.type === 'flight_intl') && '✈️ '} {/* 🌟 加入 flight_intl 的判斷 */}
+  {act.type === 'other' && '🏷️ '}
+  {act.title}
+  {act.cost > 0 && <span style={costBadgeStyle}>💰 {formatNumber(act.cost)} {act.currency === 'twd' ? 'NT$' : '円'}</span>}
+</div>
                           {act.note && <div className="act-note">{act.note}</div>}
                         </div>
                       </>
@@ -263,8 +270,14 @@ const TripDetails = ({ trip, onBack, onDataChange, isDarkMode, toggleTheme, isAd
                           <button onClick={() => editor.handleRemoveScheduleActivity(idx, i)} style={{ background: '#ff4757', color: 'white', border: 'none', borderRadius: '50%', width: '24px', height: '24px', cursor: 'pointer', flexShrink: 0 }}>✖</button>
                           <input value={act.time || ''} onChange={e => editor.handleScheduleActivityChange(idx, i, 'time', e.target.value)} placeholder="時間" style={{...inputStyle, width: '80px'}} />
                           <select value={act.type || 'other'} onChange={e => editor.handleScheduleActivityChange(idx, i, 'type', e.target.value)} style={{...inputStyle, width: '95px', padding: '4px'}}>
-                            <option value="other">🏷️ 其他</option><option value="flight">✈️ 航班</option><option value="food">🍽️ 餐食</option><option value="transport">🚆 交通</option><option value="hotel">🏨 住宿</option><option value="ticket">🎫 票券</option>
-                          </select>
+  <option value="other">🏷️ 其他</option>
+  <option value="flight">✈️ 國內/轉機</option> {/* 稍微改名以利區分 */}
+  <option value="flight_intl">✈️ 國際機票</option> {/* 🌟 新增國際機票選項 */}
+  <option value="food">🍽️ 餐食</option>
+  <option value="transport">🚆 交通</option>
+  <option value="hotel">🏨 住宿</option>
+  <option value="ticket">🎫 票券</option>
+</select>
                           <input value={act.title || ''} onChange={e => editor.handleScheduleActivityChange(idx, i, 'title', e.target.value)} placeholder="活動名稱" style={{...inputStyle, flex: 1}} />
                         </div>
                         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', paddingLeft: '34px', marginTop: '8px' }}>
