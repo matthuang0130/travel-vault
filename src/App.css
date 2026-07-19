@@ -1,0 +1,472 @@
+/* src/App.css */
+
+/* 基礎版面設定，強制覆蓋預設黑背景 */
+body {
+  margin: 0;
+  background-color: #f5f6fa !important; /* 柔和的亮灰色背景 */
+  font-family: 'Helvetica Neue', Arial, 'PingFang TC', 'Heiti TC', 'Microsoft JhengHei', sans-serif !important;
+  color: #2c3e50;
+  /* 👇 下面是為您新加的「易讀性放大魔法」 👇 */
+  font-size: 16px;          /* 基礎字體放大，覺得不夠可改 17px 或 18px */
+  line-height: 1.6;         /* 增加行距，讓文字不會擠在一起 */
+  letter-spacing: 0.5px;    /* 增加字距，提升閱讀舒適度 */
+}
+
+/* 讓各個區塊的標題也稍微拉開字距，看起來更大氣 */
+h2, h3, h4, h5 {
+  letter-spacing: 1px;
+}
+.app-container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* --- 大廳 (Lobby) 樣式 --- */
+.lobby-container {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.profile-pic {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0 auto 15px;
+  box-shadow: 0 4px 10px rgba(110, 142, 251, 0.4);
+}
+
+.header h1 {
+  margin: 0 0 10px 0;
+  font-size: 28px;
+  color: #2c3e50;
+  letter-spacing: 1px;
+}
+
+.subtitle {
+  color: #7f8c8d;
+  font-size: 16px;
+  display: inline-block;
+  padding: 5px 15px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  transition: all 0.2s;
+}
+
+.subtitle:hover {
+  background: #f1f2f6;
+  transform: scale(1.05);
+}
+
+/* 行程卡片 */
+.trips-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.trip-card {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: left;
+}
+
+.trip-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.trip-icon {
+  font-size: 45px;
+  margin-right: 20px;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.trip-info {
+  flex: 1;
+}
+
+.trip-info h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #2c3e50;
+  line-height: 1.4;
+}
+
+.trip-info p {
+  margin: 0 0 10px 0;
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.upcoming {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.status-badge.completed {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.trip-arrow {
+  font-size: 20px;
+  color: #bdc3c7;
+}
+
+/* --- 行程詳細頁面樣式 --- */
+.nav-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #ecf0f1;
+}
+
+.back-btn {
+  background: #ecf0f1;
+  border: none;
+  font-size: 14px;
+  color: #2c3e50;
+  cursor: pointer;
+  margin-right: 15px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #dfe6e9;
+}
+
+.nav-bar h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #2c3e50;
+  flex: 1;
+}
+
+/* 總結區塊 */
+.summary-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 100px;
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.summary-item .label {
+  font-size: 12px;
+  color: #95a5a6;
+  margin-bottom: 6px;
+}
+
+.summary-item .value {
+  font-size: 15px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.summary-item .link {
+  color: #3498db;
+  text-decoration: none;
+}
+
+.summary-item .link:hover {
+  text-decoration: underline;
+}
+
+/* 預算與行程通用標題 */
+.budget-section h3, .schedule-section h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  border-left: 5px solid #3498db;
+  padding-left: 12px;
+  font-size: 20px;
+}
+
+.budget-card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+/* 每日行程卡片 */
+.day-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  margin-bottom: 20px;
+  border-left: 6px solid #2ecc71;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.day-header h4 {
+  margin: 0;
+  font-size: 18px;
+  color: #34495e;
+  font-weight: bold;
+}
+
+.location-tag {
+  background-color: #ecf0f1;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #7f8c8d;
+  font-weight: bold;
+}
+
+.day-title {
+  margin: 0 0 15px 0;
+  color: #e67e22;
+  font-size: 16px;
+}
+
+.activity-item {
+  display: flex;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #ecf0f1;
+}
+
+.activity-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.activity-item .time {
+  width: 65px;
+  font-weight: bold;
+  color: #7f8c8d;
+  font-size: 14px;
+  padding-top: 2px;
+}
+
+.activity-item .details {
+  flex: 1;
+}
+
+.act-title {
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.act-note {
+  font-size: 14px;
+  color: #95a5a6;
+  line-height: 1.5;
+}
+/* --- 修正行程細節的文字對齊 --- */
+.trip-details-container {
+  text-align: left; /* 強制整個行程頁面靠左對齊，覆蓋預設的置中 */
+}
+
+.day-title {
+  text-align: left;
+}
+
+.activity-item .details {
+  text-align: left;
+}
+/* =========================================
+   🌙 黑色主題 (Dark Mode) 專屬樣式 (去白框終極版)
+   ========================================= */
+.app-container {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app-container.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode .lobby-container,
+.dark-mode .trip-details-container {
+  background-color: #121212;
+}
+
+.dark-mode .header h1,
+.dark-mode .nav-bar h2,
+.dark-mode .trip-info h3,
+.dark-mode .day-header h4,
+.dark-mode .day-title {
+  color: #f5f5f5;
+}
+
+/* 🛠️ 修正 1：移除「總指揮」的白色底框 */
+.dark-mode .subtitle {
+  background-color: transparent;
+  color: #aaa;
+  box-shadow: none;
+}
+.dark-mode .subtitle:hover {
+  background-color: #2c2c2c;
+}
+
+/* 🛠️ 修正 2：移除「行程點入後」基本資料外層的巨大白底框 */
+.dark-mode .summary-section {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.dark-mode .trip-card,
+.dark-mode .budget-card,
+.dark-mode .day-card,
+.dark-mode .summary-item {
+  background-color: #1e1e1e;
+  border: 1px solid #333;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+.dark-mode .summary-item .label { color: #aaa; }
+.dark-mode .summary-item .value,
+.dark-mode .summary-item .value.link { color: #fff; }
+
+.dark-mode .back-btn {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  border: 1px solid #444;
+}
+.dark-mode .back-btn:hover { background-color: #444; }
+
+/* 行程時間還原為純文字 */
+.dark-mode .activity-item .time {
+  background-color: transparent !important;
+  border: none !important;
+  color: #90caf9 !important;
+  padding: 2px 0 0 0 !important;
+  width: 65px;
+}
+.dark-mode .location-tag {
+  background-color: #333;
+  color: #ddd;
+  border: 1px solid #555;
+}
+
+.dark-mode .activity-item .act-title { color: #e0e0e0; }
+.dark-mode .activity-item .act-note { color: #aaa; }
+
+.dark-mode .nav-bar {
+  background-color: #121212;
+  border-bottom: 1px solid #333;
+}
+
+.dark-mode input, .dark-mode select, .dark-mode textarea {
+  background-color: #2c2c2c !important;
+  color: #fff !important;
+  border-color: #555 !important;
+}
+.dark-mode input:disabled {
+  background-color: #3a3a3a !important;
+  color: #ffb142 !important;
+}
+
+/* 🛠️ 修正 3：精準鎖定要變黑的按鈕，放過太陽/月亮切換鈕 (移除礙眼的灰框) */
+.dark-mode button[style*="background: #f8f9fa"],
+.dark-mode button[style*="background-color: #f8f9fa"],
+.dark-mode button[style*="background: #ecf0f1"] {
+  background-color: #333 !important;
+  color: #e0e0e0 !important;
+  border-color: #555 !important;
+}
+
+/* 費用區文字隱形修復 */
+.dark-mode .budget-card span {
+  color: #e0e0e0 !important; 
+}
+.dark-mode .budget-card h4 {
+  color: #f5f5f5 !important;
+  border-bottom: 1px solid #444 !important;
+}
+.dark-mode .budget-card div[style*="borderBottom"],
+.dark-mode .budget-card div[style*="border-bottom"] {
+  border-bottom-color: #444 !important;
+}
+
+.dark-mode .budget-card span[style*="rgb(211, 84, 0)"],
+.dark-mode .budget-card span[style*="#d35400"] {
+  color: #ff9f43 !important; 
+}
+.dark-mode .budget-card span[style*="rgb(127, 140, 141)"],
+.dark-mode .budget-card span[style*="#7f8c8d"] {
+  color: #aaa !important; 
+}
+
+/* 總花費預估面板 (高質感黑化) */
+.dark-mode .budget-card > div:last-child {
+  background-color: #2a2a2a !important;
+  border-color: #444 !important;
+}
+.dark-mode .budget-card > div:last-child h4 {
+  color: #fff !important;
+}
+.dark-mode .budget-card > div:last-child span,
+.dark-mode .budget-card > div:last-child div {
+  color: #ccc !important;
+}
+.dark-mode .budget-card > div:last-child span[style*="24px"],
+.dark-mode .budget-card > div:last-child span[style*="font-weight: bold"] {
+  color: #fff !important;
+}
+.dark-mode .budget-card > div:last-child div[style*="borderTop"],
+.dark-mode .budget-card > div:last-child div[style*="border-top"] {
+  border-top-color: #555 !important;
+}
