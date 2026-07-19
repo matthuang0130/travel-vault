@@ -82,7 +82,7 @@ function App() {
             旅の企画人：黃志中 {isAdmin ? '🔓' : '🔒'}
           </p>
 
-<div style={{ position: 'relative', width: '100%', maxWidth: '500px', margin: '20px auto' }}>
+<div style={{ position: 'relative', width: '90%', maxWidth: '500px', margin: '20px auto', left: '50%', transform: 'translateX(-50%)' }}>
             <svg 
   viewBox="0 0 800 800" 
   style={{ width: '100%', display: 'block' }}
